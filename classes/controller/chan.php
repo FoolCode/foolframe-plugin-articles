@@ -1,13 +1,13 @@
 <?php
 
-namespace Foolz\Foolfuuka\Controller\Chan;
+namespace Foolz\FoolFuuka\Controller\Chan;
 
-use \Foolz\Foolframe\Plugins\Articles\Model\Articles as A;
-use \Foolz\Foolframe\Plugins\Articles\Model\ArticlesArticleNotFoundException;
+use \Foolz\FoolFrame\Plugins\Articles\Model\Articles as A;
+use \Foolz\FoolFrame\Plugins\Articles\Model\ArticlesArticleNotFoundException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class Articles extends \Foolz\Foolfuuka\Controller\Chan
+class Articles extends \Foolz\FoolFuuka\Controller\Chan
 {
     /**
      * @var A

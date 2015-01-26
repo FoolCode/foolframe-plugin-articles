@@ -1,8 +1,8 @@
 <?php
 
-use Foolz\Foolframe\Model\Autoloader;
-use Foolz\Foolframe\Model\Context;
-use Foolz\Foolframe\Model\DoctrineConnection;
+use Foolz\FoolFrame\Model\Autoloader;
+use Foolz\FoolFrame\Model\Context;
+use Foolz\FoolFrame\Model\DoctrineConnection;
 use Foolz\Plugin\Event;
 
 class HHVM_Articles
@@ -17,16 +17,16 @@ class HHVM_Articles
                 $autoloader = $context->getService('autoloader');
 
                 $autoloader->addClassMap([
-                    'Foolz\Foolframe\Plugins\Articles\Model\Articles' => __DIR__ . '/classes/model/articles.php',
-                    'Foolz\Foolframe\Controller\Admin\Articles' => __DIR__ . '/classes/controller/admin.php',
-                    'Foolz\Foolfuuka\Controller\Chan\Articles' => __DIR__ . '/classes/controller/chan.php'
+                    'Foolz\FoolFrame\Plugins\Articles\Model\Articles' => __DIR__ . '/classes/model/articles.php',
+                    'Foolz\FoolFrame\Controller\Admin\Articles' => __DIR__ . '/classes/controller/admin.php',
+                    'Foolz\FoolFuuka\Controller\Chan\Articles' => __DIR__ . '/classes/controller/chan.php'
                 ]);
 
                 $context->getContainer()
-                    ->register('foolframe-plugin.articles', 'Foolz\Foolframe\Plugins\Articles\Model\Articles')
+                    ->register('foolframe-plugin.articles', 'Foolz\FoolFrame\Plugins\Articles\Model\Articles')
                     ->addArgument($context);
 
-                Event::forge('Foolz\Foolframe\Model\Context::handleWeb#obj.afterAuth')
+                Event::forge('Foolz\FoolFrame\Model\Context::handleWeb#obj.afterAuth')
                     ->setCall(function ($result) use ($context) {
                         // don't add the admin panels if the user is not an admin
                         if ($context->getService('auth')->hasAccess('maccess.admin')) {
@@ -35,7 +35,7 @@ class HHVM_Articles
                                     '/admin/articles/{_suffix}',
                                     [
                                         '_suffix' => 'manage',
-                                        '_controller' => '\Foolz\Foolframe\Controller\Admin\Articles::*'
+                                        '_controller' => '\Foolz\FoolFrame\Controller\Admin\Articles::*'
                                     ],
                                     [
                                         '_suffix' => '.*'
@@ -45,7 +45,7 @@ class HHVM_Articles
 
                             function() {die('lol');};
 
-                            Event::forge('Foolz\Foolframe\Controller\Admin::before#var.sidebar')
+                            Event::forge('Foolz\FoolFrame\Controller\Admin::before#var.sidebar')
                                 ->setCall(function ($result) {
                                     $sidebar = $result->getParam('sidebar');
                                     $sidebar[]['articles'] = [
@@ -68,7 +68,7 @@ class HHVM_Articles
                                 '/_/articles/{_suffix}',
                                 [
                                     '_suffix' => '',
-                                    '_controller' => '\Foolz\Foolfuuka\Controller\Chan\Articles::articles'
+                                    '_controller' => '\Foolz\FoolFuuka\Controller\Chan\Articles::articles'
                                 ],
                                 [
                                     '_suffix' => '.*'
@@ -96,7 +96,7 @@ class HHVM_Articles
                     });
             });
 
-        Event::forge('Foolz\Foolframe\Model\Plugin::install#foolz/foolframe-plugin-articles')
+        Event::forge('Foolz\FoolFrame\Model\Plugin::install#foolz/foolframe-plugin-articles')
             ->setCall(function ($result) {
                 /** @var Context $context */
                 $context = $result->getParam('context');

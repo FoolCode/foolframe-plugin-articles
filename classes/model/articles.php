@@ -1,12 +1,12 @@
 <?php
 
-namespace Foolz\Foolframe\Plugins\Articles\Model;
+namespace Foolz\FoolFrame\Plugins\Articles\Model;
 
-use Foolz\Foolframe\Model\Context;
-use Foolz\Foolframe\Model\DoctrineConnection;
+use Foolz\FoolFrame\Model\Context;
+use Foolz\FoolFrame\Model\DoctrineConnection;
 use Foolz\Cache\Cache;
-use Foolz\Foolframe\Model\Model;
-use Foolz\Foolframe\Model\Uri;
+use Foolz\FoolFrame\Model\Model;
+use Foolz\FoolFrame\Model\Uri;
 
 class ArticlesArticleNotFoundException extends \Exception {};
 

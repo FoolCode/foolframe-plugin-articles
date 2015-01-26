@@ -1,18 +1,18 @@
 <?php
 
-namespace Foolz\Foolframe\Controller\Admin;
+namespace Foolz\FoolFrame\Controller\Admin;
 
-use Foolz\Foolframe\Model\DoctrineConnection;
-use Foolz\Foolframe\Model\Validation\Validator;
-use Foolz\Foolframe\Plugins\Articles\Model\Articles as A;
-use Foolz\Foolframe\Plugins\Articles\Model\ArticlesArticleNotFoundException;
-use Foolz\Foolframe\Model\Validation\ActiveConstraint\Trim;
+use Foolz\FoolFrame\Model\DoctrineConnection;
+use Foolz\FoolFrame\Model\Validation\Validator;
+use Foolz\FoolFrame\Plugins\Articles\Model\Articles as A;
+use Foolz\FoolFrame\Plugins\Articles\Model\ArticlesArticleNotFoundException;
+use Foolz\FoolFrame\Model\Validation\ActiveConstraint\Trim;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-class Articles extends \Foolz\Foolframe\Controller\Admin
+class Articles extends \Foolz\FoolFrame\Controller\Admin
 {
     /**
      * @var A
